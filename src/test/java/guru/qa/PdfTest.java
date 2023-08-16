@@ -1,14 +1,16 @@
 package guru.qa;
 
 import com.codeborne.pdftest.PDF;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.assertj.core.api.Assertions;
 
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+
 
 public class PdfTest {
 
@@ -26,8 +28,7 @@ public class PdfTest {
                 if (zipEntry.getName().equals("output.pdf")) {
                     PDF pdf = new PDF(zipInputStream);
 
-
-                    Assertions.assertEquals("Файлы PDF (Portable Document Format) действительно популярны по множеству" +
+                    String expectedResult = "Файлы PDF (Portable Document Format) действительно популярны по множеству" +
                             "причин. Вот некоторые из основных преимуществ, которые сделали PDF таким" +
                             "распространенным форматом для обмена и хранения документов:" +
                             "Целостность и сохранение вида: Файлы PDF сохраняют исходный внешний вид и" +
@@ -55,7 +56,10 @@ public class PdfTest {
                             "полезно для сбора данных и обратной связи от пользователей." +
                             "Из-за этих преимуществ и большой поддержки со стороны программ и платформ," +
                             "формат PDF стал стандартом для обмена документами, от бизнес-корреспонденции до" +
-                            "научных статей и медиа-материалов.", pdf.text.replace("\r\n", ""));
+                            "научных статей и медиа-материалов.";
+
+                    Assertions.assertThat(pdf.text.replace("\r\n", ""))
+                            .isEqualTo(expectedResult);
                 }
             }
         }
