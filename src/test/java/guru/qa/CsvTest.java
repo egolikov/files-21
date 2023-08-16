@@ -13,9 +13,9 @@ import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class CsvFromZipTest {
+public class CsvTest {
 
-    private static final ClassLoader cl = CsvFromZipTest.class.getClassLoader();
+    private static final ClassLoader cl = CsvTest.class.getClassLoader();
 
     @Test
     @DisplayName("Проверка содержимого файла .csv")

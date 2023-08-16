@@ -10,9 +10,9 @@ import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class XlsFromZipTest {
+public class XlsTest {
 
-    private static final ClassLoader cl = PdfFromZipTest.class.getClassLoader();
+    private static final ClassLoader cl = PdfTest.class.getClassLoader();
 
     @Test
     @DisplayName("Проверка содержимого файла .xls")
