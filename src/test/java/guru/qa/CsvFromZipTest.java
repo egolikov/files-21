@@ -2,6 +2,7 @@ package guru.qa;
 
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -13,9 +14,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class CsvFromZipTest {
-    ClassLoader cl = CsvFromZipTest.class.getClassLoader();
+
+    private static final ClassLoader cl = CsvFromZipTest.class.getClassLoader();
 
     @Test
+    @DisplayName("Проверка содержимого файла .csv")
     void csvTest() throws Exception {
 
         try (InputStream zipStream = cl.getResourceAsStream("output.zip");

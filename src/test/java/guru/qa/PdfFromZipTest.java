@@ -2,6 +2,7 @@ package guru.qa;
 
 import com.codeborne.pdftest.PDF;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -14,6 +15,7 @@ public class PdfFromZipTest {
     private static final ClassLoader cl = PdfFromZipTest.class.getClassLoader();
 
     @Test
+    @DisplayName("Проверка содержимого файла .pdf")
     void pdfTest() throws Exception {
 
         try (InputStream zipStream = cl.getResourceAsStream("output.zip");
