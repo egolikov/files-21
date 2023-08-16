@@ -1,7 +1,7 @@
 package guru.qa;
 
 import com.opencsv.CSVReader;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,29 +31,18 @@ public class CsvTest {
                     CSVReader csvReader = new CSVReader(reader);
                     List<String[]> content = csvReader.readAll();
 
-                    Assertions.assertEquals(10, content.size());
+                    Assertions.assertThat(content).hasSize(10);
 
-                    final String[] firstRow = content.get(0);
-                    final String[] secondRow = content.get(1);
-                    final String[] thirdRow = content.get(2);
-                    final String[] fourthRow = content.get(3);
-                    final String[] fifthRow = content.get(4);
-                    final String[] sixthRow = content.get(5);
-                    final String[] seventhRow = content.get(6);
-                    final String[] eighthRow = content.get(7);
-                    final String[] ninthRow = content.get(8);
-                    final String[] tenthRow = content.get(9);
-
-                    Assertions.assertArrayEquals(new String[]{"Анна", "Иванова", "123-456-7890", "anna@example.com"}, firstRow);
-                    Assertions.assertArrayEquals(new String[]{"Петр", "Петров", "987-654-3210", "petr@example.com"}, secondRow);
-                    Assertions.assertArrayEquals(new String[]{"Елена", "Сидорова", "555-123-4567", "elena@example.com"}, thirdRow);
-                    Assertions.assertArrayEquals(new String[]{"Иван", "Смирнов", "111-222-3333", "ivan@example.com"}, fourthRow);
-                    Assertions.assertArrayEquals(new String[]{"Мария", "Кузнецова", "444-555-6666", "maria@example.com"}, fifthRow);
-                    Assertions.assertArrayEquals(new String[]{"Алексей", "Попов", "777-888-9999", "alex@example.com"}, sixthRow);
-                    Assertions.assertArrayEquals(new String[]{"Ольга", "Морозова", "333-444-5555", "olga@example.com"}, seventhRow);
-                    Assertions.assertArrayEquals(new String[]{"Александр", "Васильев", "666-777-8888", "sasha@example.com"}, eighthRow);
-                    Assertions.assertArrayEquals(new String[]{"Анна", "Петрова", "888-999-0000", "annap@example.com"}, ninthRow);
-                    Assertions.assertArrayEquals(new String[]{"Сергей", "Иванов", "222-333-4444", "sergei@example.com"}, tenthRow);
+                    Assertions.assertThat(content.get(0)).containsExactly("Анна", "Иванова", "123-456-7890", "anna@example.com");
+                    Assertions.assertThat(content.get(1)).containsExactly("Петр", "Петров", "987-654-3210", "petr@example.com");
+                    Assertions.assertThat(content.get(2)).containsExactly("Елена", "Сидорова", "555-123-4567", "elena@example.com");
+                    Assertions.assertThat(content.get(3)).containsExactly("Иван", "Смирнов", "111-222-3333", "ivan@example.com");
+                    Assertions.assertThat(content.get(4)).containsExactly("Мария", "Кузнецова", "444-555-6666", "maria@example.com");
+                    Assertions.assertThat(content.get(5)).containsExactly("Алексей", "Попов", "777-888-9999", "alex@example.com");
+                    Assertions.assertThat(content.get(6)).containsExactly("Ольга", "Морозова", "333-444-5555", "olga@example.com");
+                    Assertions.assertThat(content.get(7)).containsExactly("Александр", "Васильев", "666-777-8888", "sasha@example.com");
+                    Assertions.assertThat(content.get(8)).containsExactly("Анна", "Петрова", "888-999-0000", "annap@example.com");
+                    Assertions.assertThat(content.get(9)).containsExactly("Сергей", "Иванов", "222-333-4444", "sergei@example.com");
                 }
             }
         }
