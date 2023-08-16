@@ -20,12 +20,17 @@ public class PdfTest {
     @DisplayName("Проверка содержимого файла .pdf")
     void pdfTest() throws Exception {
 
+        boolean filePresentInZip = false;
+
         try (InputStream zipStream = cl.getResourceAsStream("output.zip");
              ZipInputStream zipInputStream = new ZipInputStream(Objects.requireNonNull(zipStream))) {
 
             ZipEntry zipEntry;
             while ((zipEntry = zipInputStream.getNextEntry()) != null) {
                 if (zipEntry.getName().equals("output.pdf")) {
+
+                    filePresentInZip = true;
+
                     PDF pdf = new PDF(zipInputStream);
 
                     String expectedResult = "Файлы PDF (Portable Document Format) действительно популярны по множеству" +
@@ -63,5 +68,8 @@ public class PdfTest {
                 }
             }
         }
+
+        Assertions.assertThat(filePresentInZip).as("Ожидаемый файл отсутствует в архиве output.zip").isTrue();
+
     }
 }

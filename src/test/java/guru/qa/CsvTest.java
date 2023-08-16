@@ -21,12 +21,17 @@ public class CsvTest {
     @DisplayName("Проверка содержимого файла .csv")
     void csvTest() throws Exception {
 
+        boolean filePresentInZip = false;
+
         try (InputStream zipStream = cl.getResourceAsStream("output.zip");
              ZipInputStream zipInputStream = new ZipInputStream(Objects.requireNonNull(zipStream))) {
 
             ZipEntry zipEntry;
             while ((zipEntry = zipInputStream.getNextEntry()) != null) {
                 if (zipEntry.getName().equals("output.csv")) {
+
+                    filePresentInZip = true;
+
                     Reader reader = new InputStreamReader(zipInputStream);
                     CSVReader csvReader = new CSVReader(reader);
                     List<String[]> content = csvReader.readAll();
@@ -46,5 +51,8 @@ public class CsvTest {
                 }
             }
         }
+
+        Assertions.assertThat(filePresentInZip).as("Ожидаемый файл отсутствует в архиве output.zip").isTrue();
+
     }
 }

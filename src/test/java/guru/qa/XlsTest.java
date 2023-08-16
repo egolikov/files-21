@@ -18,12 +18,17 @@ public class XlsTest {
     @DisplayName("Проверка содержимого файла .xls")
     void xlsTest() throws Exception {
 
+        boolean filePresentInZip = false;
+
         try (InputStream zipStream = cl.getResourceAsStream("output.zip");
              ZipInputStream zipInputStream = new ZipInputStream(Objects.requireNonNull(zipStream))) {
 
             ZipEntry zipEntry;
             while ((zipEntry = zipInputStream.getNextEntry()) != null) {
                 if (zipEntry.getName().equals("output.xls")) {
+
+                    filePresentInZip = true;
+
                     XLS xls = new XLS(zipInputStream);
 
                     Assertions.assertThat(xls.excel.getSheetAt(0).getRow(0).getCell(0).getStringCellValue()).isEqualTo("Number");
@@ -118,5 +123,8 @@ public class XlsTest {
                 }
             }
         }
+
+        Assertions.assertThat(filePresentInZip).as("Ожидаемый файл отсутствует в архиве output.zip").isTrue();
+
     }
 }
