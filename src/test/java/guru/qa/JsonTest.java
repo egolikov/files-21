@@ -6,6 +6,7 @@ import guru.qa.model.PersonModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class JsonTest {
 
     @Test
     @DisplayName("Проверка содержимого файла .json")
-    public void testJsonParsing() throws Exception {
+    public void testJsonParsing() throws IOException {
 
         try (InputStream stream = cl.getResourceAsStream("output.json")) {
             ObjectMapper objectMapper = new ObjectMapper();

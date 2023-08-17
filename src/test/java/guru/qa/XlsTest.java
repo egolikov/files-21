@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
@@ -16,7 +17,7 @@ public class XlsTest {
 
     @Test
     @DisplayName("Проверка содержимого файла .xls")
-    void xlsTest() throws Exception {
+    void xlsTest() throws IOException {
 
         boolean filePresentInZip = false;
 

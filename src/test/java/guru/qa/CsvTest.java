@@ -1,10 +1,12 @@
 package guru.qa;
 
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -19,7 +21,7 @@ public class CsvTest {
 
     @Test
     @DisplayName("Проверка содержимого файла .csv")
-    void csvTest() throws Exception {
+    void csvTest() throws IOException, CsvException {
 
         boolean filePresentInZip = false;
 

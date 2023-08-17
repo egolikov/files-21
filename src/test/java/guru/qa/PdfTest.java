@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
@@ -18,7 +19,7 @@ public class PdfTest {
 
     @Test
     @DisplayName("Проверка содержимого файла .pdf")
-    void pdfTest() throws Exception {
+    void pdfTest() throws IOException {
 
         boolean filePresentInZip = false;
 
